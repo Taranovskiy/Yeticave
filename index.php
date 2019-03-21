@@ -15,40 +15,52 @@ $lots = [
     [
         'name' => '2014 Rossignol District Snowboard',
         'category' => 'Доски и лыжи',
-        'price' => 10999,
+        'cost' => 10999,
         'img' => 'img/lot-1.jpg'
     ],
     [
         'name' => 'DC Ply Mens 2016/2017 Snowboard',
         'category' => 'Доски и лыжи',
-        'price' => 15999,
+        'cost' => 15999,
         'img' => 'img/lot-2.jpg'
     ],
     [
         'name' => 'Union Contact Pro 2015',
         'category' => 'Крепления',
-        'price' => 8000,
+        'cost' => 8000,
         'img' => 'img/lot-3.jpg'
     ],
     [
         'name' => 'Ботинки для сноуборда DC Mutiny Charocal',
         'category' => 'Ботинки',
-        'price' => 10999,
+        'cost' => 10999,
         'img' => 'img/lot-4.jpg'
     ],
     [
         'name' => 'Куртка для сноуборда DC Mutiny Charocal',
         'category' => 'Одежда',
-        'price' => 7500,
+        'cost' => 7500,
         'img' => 'img/lot-5.jpg'
     ],
     [
         'name' => 'Маска Oakley Canopy',
         'category' => 'Разное',
-        'price' => 5400,
+        'cost' => 5400,
         'img' => 'img/lot-6.jpg'
     ],
 ];
+
+function cost_format($num) {
+    if ($num < 1000) {
+        return $num;
+    }
+    $str = strval($num);
+    $length = strlen($str);
+    $thousands = substr($str, 0, $length - 3);
+    $hundreds = substr($str, -3);
+    return $thousands . ' ' . $hundreds;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -133,7 +145,7 @@ $lots = [
                         <div class="lot__state">
                             <div class="lot__rate">
                                 <span class="lot__amount">Стартовая цена</span>
-                                <span class="lot__cost"><?= $val['price']; ?><b class="rub">р</b></span>
+                                <span class="lot__cost"><?= cost_format($val['cost']); ?><b class="rub">р</b></span>
                             </div>
                             <div class="lot__timer timer">
                             </div>
